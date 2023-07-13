@@ -1,0 +1,15 @@
+{
+  "name": "fluentui-emoji-demo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "netlify dev"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "fluentui-emoji-js": "^1.0.1"
+  }
+}

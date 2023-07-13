@@ -1,0 +1,9 @@
+[build]
+  publish = "public"
+  functions = "functions"
+
+[[redirects]]
+  from = "/getEmoji"
+  to = "/.netlify/functions/getEmoji"
+  status = 200
+  force = true

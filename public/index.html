@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>fluentui-emoji-js Demo</title>
+  <style>
+    body {
+      font-family: system-ui, sans-serif;
+    }
+  </style>
+</head>
+<body>
+  <h1>fluentui-emoji-js Demo</h1>
+  <form>
+    <select name="mode" id="mode">
+      <option value="glyph">glyph</option>
+      <option value="code">code</option>
+    </select>
+    <input type="text" name="emoji" id="emoji">
+    <select name="style" id="style">
+      <option value="3D">3D</option>
+      <option value="Color">Color</option>
+      <option value="Flat">Flat</option>
+      <option value="High Contrast">High Contrast</option>
+    </select>
+    <button type="submit">Get Emoji</button>
+  </form>
+  <img src="" id="output">
+  <script>
+    const form = document.querySelector('form');
+    const output = document.querySelector('#output');
+    let lastValues;
+
+    form.addEventListener("submit", event => {
+      event.preventDefault();
+
+      const mode = document.querySelector('#mode').value;
+      const emoji = document.querySelector('#emoji').value;
+      const style = document.querySelector('#style').value;
+
+      const values = `${mode},${emoji},${style}`;
+
+      if (mode && emoji && style && (values != lastValues)) {
+        fetch(`/getEmoji/?mode=${mode}&emoji=${emoji}&style=${style}`)
+          .then(res => res.json())
+          .then(res => {
+            if (res.url) {
+              output.src = res.url;
+              lastValues = values;
+            } else if (res.error) {
+              alert(res.error)
+            } else {
+              throw new Error("Unexpected response format")
+            }
+          })
+          .catch(error => {
+            console.error('Error:', error);
+          });
+      }
+    });
+  </script>
+  <script async src="https://analytics.zacharyc.site/tracker.js" data-ackee-server="https://analytics.zacharyc.site" data-ackee-domain-id="010f26e9-05e1-41f5-86df-c0f7d3cc752e"></script>
+</body>
+</html>
