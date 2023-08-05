@@ -1,5 +1,5 @@
 {
-  "name": "fluentui-emoji-demo",
+  "name": "fluentui-emoji-js-demo",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -10,6 +10,6 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "fluentui-emoji-js": "^1.0.1"
+    "fluentui-emoji-js": "^1.1.1"
   }
 }
